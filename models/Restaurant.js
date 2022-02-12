@@ -1,38 +1,34 @@
 const mongoose = require('mongoose');
+//Robbi AD 101236645
+
+const AddressSchema = new mongoose.Schema({
+  building: Number,
+  street: String,
+  zipcode: Number
+})
 
 const RestSchema = new mongoose.Schema({
 
-    address:
-    {
-        building: Number,
-        street: String,
-        zipcode:Number
-    },
-
-    city:
-    {
-        type: String,
-        required: true
-    },
-
-    cuisine:
-    {
-        type: String,
-        required: true
-    },
-
-    name:
-    {
-        type: String,
-        required: true
-    },
-
-    restaurant_id:
-    {
-        type: String,
-        required: true
-    },
-
+  address: {
+    type: AddressSchema,
+    required: true
+},
+city: {
+    type: String,
+    required: true
+},
+cuisine: {
+    type: String,
+    required: true
+},
+name: {
+    type: String,
+    required: true,
+},
+restaurant_id:{
+    type: Number,
+    requied: true
+}
 });
 
 
@@ -40,7 +36,7 @@ const RestSchema = new mongoose.Schema({
 
 RestSchema.static("getRestByCuisine", function(value)
 {
-    return this.find("cuisine: value}")
+    return this.find({cuisine: value})
 })
 
 // Middleware POST
